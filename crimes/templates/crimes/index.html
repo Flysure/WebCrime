@@ -1,10 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
     <meta charset="utf-8">
     <title></title>
+    <script  src="{% static 'js/leaflet-heat.js' %}"> </script>
   </head>
   <body>
-    <p>Hello</p>
+<div id="mapid"></div>
   </body>
 </html>
+<style media="screen">
+  #mapid { height: 800px;
+    width:1000px;
+   }
+</style>
+<script type="text/javascript">
+  var mymap = L.map('mapid').setView([40.00233,-83.00 ], 12);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmx5c3VyZTE5OTciLCJhIjoiY2pta2xiMDRkMDIycTN1bnZiOGtuc3J1NCJ9.egiZOL0oX3eX4f-Atl9XWQ', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+
+var heat = L.heatLayer([
+	[39.99746,	-83.00754, 0.2], // lat, lng, intensity
+	[39.990437,	-83.01409, 0.5],
+  [39.99746,	-83.00754],
+  [39.990437,	-83.01409],
+  [39.99104	, -83.003174],
+  [40.004837	, -83.00671],
+  [40.00384	, -82.99849],
+  [39.98955	, -83.01686],
+  [39.990826	, -82.99935],
+  [39.99285	, -82.99798],
+  [40.006138	, -82.99667],
+  [39.99774	, -83.00759],
+  [39.998478	, -83.00774],
+  [39.984886	, -83.00506],
+  [39.998478	, -83.00774],
+  [39.990364	, -83.01214],
+  [39.987778	, -83.039024],
+  [40.002342	, -82.99921],
+  [39.982735	, -82.998764]
+], {radius: 50}).addTo(mymap);
+
+// thing = [[40.00233,	-83.00849],
+// [39.99746,	-83.00754],
+// [39.990437,	-83.01409],
+// [39.99104	, -83.003174],
+// [40.004837	, -83.00671],
+// [40.00384	, -82.99849],
+// [39.98955	, -83.01686],
+// [39.990826	, -82.99935],
+// [39.99285	, -82.99798],
+// [40.006138	, -82.99667],
+// [39.99774	, -83.00759],
+// [39.998478	, -83.00774],
+// [39.984886	, -83.00506],
+// [39.998478	, -83.00774],
+// [39.990364	, -83.01214],
+// [39.987778	, -83.039024],
+// [40.002342	, -82.99921],
+// [39.982735	, -82.998764]]
+//
+// for(var i = 0; i < thing.length; i++){
+//     var marker = L.marker(thing[i]).addTo(mymap);
+// }
+
+
+</script>
