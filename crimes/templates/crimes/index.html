@@ -48,20 +48,25 @@
     <div class="columns">
       <div class="column">
         <aside class="menu">
+          <form action="" method="post">
+          {% csrf_token %}
   <p class="menu-label">Date Reported</p>
   <ul class="menu-list">
-    <li><a>Dashboard</a></li>
+    <li><a>{{ form.date_reported_beg }}</a></li>
+    <li><a>{{ form.date_reported_end }}</a></li>
   </ul>
   <p class="menu-label">Radius</p>
   <ul class="menu-list">
-    <li><a>Dashboard</a></li>
+    <li><a>{{ form.radius }}</a></li>
   </ul>
   <p class="menu-label">Type of crime</p>
   <ul class="menu-list">
-    <li><a>Team Settings</a></li>
-  <p class="menu-label">Name of victim</p>
-  <ul class="menu-list">
-    <li><a>Team Settings</a></li>
+    <li><a>{{ form.type }}</a></li>
+
+
+
+    <input type="submit" value="Submit">
+</form>
 
 </aside>
       </div>
