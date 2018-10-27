@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-
+from crimes.models import CrimeTable
 
 def index(request):
-    return render(request,  'crimes/index.html')
+    crimes = CrimeTable.objects.filter(lat__icontains= '.')
+    return render(request,  'crimes/index.html', {'crimes':crimes})
